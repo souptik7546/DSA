@@ -21,18 +21,19 @@ int32_t main() {
         }
         for(auto &k:smap){
             if(k.second%2==0){
-                even+=k.second;
+                even++;
             }
             else{
-                odd+=k.second;
+                odd++;
             }
         }
-        if(k<odd-1){
-            cout<< "NO"<<endl;
+        if(odd-k>1){
+            cout<<"NO"<<endl;
         }
         else{
             cout<<"YES"<<endl;
         }
+       
     }
 
     return 0;
