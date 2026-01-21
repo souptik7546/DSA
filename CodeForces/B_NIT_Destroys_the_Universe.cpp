@@ -11,46 +11,43 @@ int32_t main() {
     while (t--) {
         int n;
         cin>>n;
-        vector<int> a(n);
+        vector<int> a(n+1);
         int count=0;
-        for(auto &p:a){
-            cin>>p;
+        for(int i=1;i<=n;i++){
+            cin>>a[i];
         }
-        if(n==1){
-            if(a[0]==0){
-             cout<<0<<endl;
-            }
-            else{
-                cout<<1<<endl;
-            }
-        }
-        else{
-            for(int i=1;i<n-1;i++){
-                if(a[i]==0){
-                    if(a[i-1]!=0&&a[i+1]!=0){
-                        count++;
-                        a[i]=1;
-                    }
-                } 
-            }
-            int nonZeros=0;
-                for(int i=0;i<n;i++){
-                    if(a[i]!=0){
-                        nonZeros++;
-                    }
-                    else if(a[i]==0){
-                        if(nonZeros>0){
-                            count++;
-                        }
-                    nonZeros=0;
-                    }
+
+        int l,u;
+        l=-1;
+        u=-1;
+         for(int i=1;i<=n;i++){
+            if(a[i]!=0){
+                if(l==-1&&u==-1){
+                    l=u=i;
                 }
-                if(nonZeros>0){
-                           count++;
-                           nonZeros=0;
-                        }
-                cout<<count<<endl;
-        }
+                else{
+                    u=i;
+                }
+            }
+         }
+         if(l==-1){
+            cout<<0<<endl;
+         }else{
+            int mid=0;
+         for(int i=l;i<=u;i++){
+            if(a[i]==0){
+                mid=2;
+                break;
+            }
+         }
+         if(mid==2){
+            cout<<2<<endl;
+         }
+         else if(mid==0){
+            cout<<1<<endl;
+         }
+         }
+         
     }
 
     return 0;
